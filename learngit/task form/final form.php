@@ -1,6 +1,16 @@
 <!doctype html>
 <html>
-<head><title>Sign up form</title></head>
+<head>
+
+<title>
+Sign up form
+</title>
+
+<style>
+.error {color: #FF0000;}
+</style>
+
+</head>
 <body>
 
 <form name="myform" action="final form submitted.php" method="post">
