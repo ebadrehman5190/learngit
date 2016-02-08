@@ -9,24 +9,24 @@
 		<table>
 			<tr>
 				<td>Name:</td>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="name" required></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td><input type="text" name="email"></td>
+				<td><input type="text" name="email" required></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><input type="text" name="pwd"></td>
+				<td><input type="text" name="pwd" required></td>
 			</tr>
 			<tr>
 				<td>Confirm password:</td>
-				<td><input type="text" name="cpwd"></td>
+				<td><input type="text" name="cpwd" required></td>
 			</tr>
 			<tr>
 				<td>Country:</td>
 				<td>
-					<select name="country">
+					<select name="country" required>
 						<option value=""></option>
 						<option value="Australia">Australia</option>
 						<option value="Bangladesh">Bangladesh</option>
@@ -50,7 +50,7 @@
 			</tr>
 			<tr>
 				<td>Message:</td>
-				<td><textarea name="message" rows="5" cols="40"></textarea><td>
+				<td><textarea name="message" rows="5" cols="40" required></textarea><td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="submit"><td>
