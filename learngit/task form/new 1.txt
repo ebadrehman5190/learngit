@@ -1,0 +1,2 @@
+Last name:<input type="text" name="lname"><br>
+echo $_POST["last name"];
