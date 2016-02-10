@@ -13,6 +13,10 @@ Sign up form
 </head>
 <body>
 
+<?php
+$name=$email=$pwd=$cpwd=$country=$gender=$admin=$message="";
+?>
+
 <form action="" method="post">
 	<fieldset>
 	<legend><h1>Sign Up Form</h1></legend>
