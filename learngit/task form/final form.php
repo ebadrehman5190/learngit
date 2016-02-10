@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$gender = test_input($_POST["gender"]);
 		}
 		
-		if (empty($_POST[""])){
+		if (empty($_POST["admin"])){
 			$AdminErr="admin is required";
 		} else {
 			$admin = test_input($_POST["admin"]);
@@ -79,7 +79,7 @@ function test_input($data) {
 
 ?>
 
-<form action="" method="post">
+<form action="final form submitted.php" method="post">
 	<fieldset>
 	<legend><h1>Sign Up Form</h1></legend>
 		<table>
