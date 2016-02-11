@@ -1,0 +1,26 @@
+<html>
+  <head>
+  <script type="text/javascript">
+  function validate() {
+  if(myform.fname.value.length==0)
+  {
+   document.getElementById("fname").innerHTML="this is invalid name ";
+  }
+  }
+  </script>
+  </head>
+  <body>
+  <form name="myform">
+  First_Name
+  <input type=text id=fname name=fname onblur="validate()"> </input>
+
+  <br> <br>
+  Last_Name
+  <input type=text id=lname name=lname onblur="validate()"> </input>
+
+  <br>
+  <input type=button value=check> 
+
+  </form>
+  </body>
+</html>
