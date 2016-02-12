@@ -8,47 +8,17 @@ Sign up form
 
 <script>
 function validateForm() {
-    var a = document.forms["form"]["name"].value;
-    var b = document.forms["form"]["email"].value;
-	var c = document.forms["form"]["pwd"].value;
-	var d = document.forms["form"]["cpwd"].value;
-	var e = document.forms["form"]["country"].value;
-	var f = document.forms["form"]["gender"].value;
-	var g = document.forms["form"]["admin"].value;
-	if (a == "") {
+    var x = document.forms["form"]["name"].value;
+    if (x == null || x == "") {
         alert("Name must be filled out");
         return false;
     }
-	if (b == "") {
-		alert("email must be filled out");
-		return false;
-	}
-	if (c == "") {
-		alert("password must be filled out");
-		return false;
-	}
-	if (c.length < 8) {
-		alert("password must contain 8 digits");
-		return false;
-	}
-	if (c != d) {
-		alert("confirm password should be same");
-		return false;
-	}
-	if (f == "") {
-		alert("Gender must be marked");
-		return false;
-	}
-	if (g == "") {
-		alert("Admin type must be selected");
-		return false;
-	}
 }
 </script>
 </head>
 <body>
 
-<form name="form" method="POST" action="final form submitted.php" onsubmit="return validateForm()">
+<form name="form" method="POST" action="final form submitted.php" onsubmit="return checkform(this);">
 	<fieldset>
 	<legend><h1>Sign Up Form</h1></legend>
 		<table>

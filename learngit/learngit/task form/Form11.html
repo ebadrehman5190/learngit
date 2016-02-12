@@ -8,13 +8,18 @@ Sign up form
 
 <script>
 function validateForm() {
-    var a = document.forms["form"]["name"].value;
-    var b = document.forms["form"]["email"].value;
-	var c = document.forms["form"]["pwd"].value;
-	var d = document.forms["form"]["cpwd"].value;
-	var e = document.forms["form"]["country"].value;
-	var f = document.forms["form"]["gender"].value;
-	var g = document.forms["form"]["admin"].value;
+    var name = document.forms["form"]["name"].value;
+    var email = document.forms["form"]["email"].value;
+	var password = document.forms["form"]["pwd"].value;
+	var confirmpassword = document.forms["form"]["cpwd"].value;
+	var country = document.forms["form"]["country"].value;
+	var gender = document.forms["form"]["gender"].value;
+	var admintype = document.forms["form"]["admin"].value;
+	
+	
+	
+	var alertType ="Name= "+name+"Email="+email+"pass="+password+"confirmpass="+confirmpassword+;
+	alert(alertType);
 	if (a == "") {
         alert("Name must be filled out");
         return false;
