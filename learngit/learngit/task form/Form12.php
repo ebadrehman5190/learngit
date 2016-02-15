@@ -12,30 +12,27 @@ Sign up form
 
 </head>
 <body>
-
 <script type="text/javascript">
-function myFunction(){
-	var name, nameErr;
-	nameErr = document.getElementById(nameErr);
-	nameErr.innerHTML = "";
-	name = document.getElementById("name");
-	try {
-		if(name == "") throw "is empty";
-	}
-	catch(err1) {
-		nameErr.innerHTML = "Input " + err1;
+function revalidate()
+{
+	if(document.SignUpform.name.value=""){
+		document.getElementById("sname").innerHTML="name should not be empty";
+		SignUpform.name.focus();
+		return(false);
+	}else{
+		return(true);
 	}
 }
 </script>
 
-<form action="" method="POST">
+<form name="SignUpform" action="" method="POST" onsubmit="return(revalidate())">
 	<fieldset>
 	<legend><h1>Sign Up Form</h1></legend>
 		<table>
 			<tr>
 				<td>Name:</td>
 				<td><input type="text" name="name" id="name"></td>
-				<td><p id="nameErr"></p></td>
+				<td><font color='red'> <DIV id="sname"> </DIV> </font></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
