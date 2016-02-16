@@ -9,21 +9,11 @@ Sign up form
 <style>
 .error {color #FF0000;}
 </style>
-<?php
 
-$name = $_POST["name"];
-$email = $_POST["email"];
-$pwd = $_POST["pwd"];
-$cpwd = $_POST["cpwd"];
-$country = $_POST["country"];
-$gender = $_POST["gender"];
-$admin = $_POST["admin"];
-$message = $_POST["message"];
-?>
 </head>
 <body>
 
-<form name="SignUpform" action="final form submitted.php" method="POST" onSubmit="return revalidate()">
+<form name="SignUpform" action="" method="POST" onsubmit="return revalidate()">
 	<fieldset>
 	<legend><h1>Sign Up Form</h1></legend>
 		<table>
@@ -106,10 +96,12 @@ function revalidate()
 		if(document.getElementById("country").value == ""){
 			document.getElementById("var_country").innerHTML="country must be required";
 		}
-		
+		if(document.getElementById("gender").value == ""){
+			document.getElementById("var_gender").innerHTML="gender must be required";
+		}
 		return(false);
-	
-}
+		
+		
 </script>
 
 </body>
