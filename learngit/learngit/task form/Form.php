@@ -84,25 +84,25 @@ function test_input($data) {
 		<table>
 			<tr>
 				<td>Name:</td>
-				<td><input type="text" name="name" required></td>
+				<td><input type="text" name="name" ></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td><input type="email" name="email" required></td>
+				<td><input type="email" name="email" ></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><input type="password" name="pwd" required></td>
+				<td><input type="password" name="pwd" ></td>
 			</tr>
 			<tr>
 				<td>Confirm password:</td>
-				<td><input type="password" name="cpwd" required>
+				<td><input type="password" name="cpwd" >
 				<span class="error"> <?php echo $cpwdErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Country:</td>
 				<td>
-					<select name="country" required>
+					<select name="country" >
 						<option value="">Select country</option>
 						<option value="Australia">Australia</option>
 						<option value="Bangladesh">Bangladesh</option>
@@ -113,14 +113,14 @@ function test_input($data) {
 			</tr>
 			<tr>
 				<td>Gender:</td>
-				<td><input type="radio" name="gender" value="Male" checked>Male
+				<td><input type="radio" name="gender" value="Male" >Male
 					<input type="radio" name="gender" value="Female">Female</td>
 			</tr>
 			<tr>
 				<td>Admin type:</td>
 				<td><input type="checkbox" name="admin" value="Admin">Admin
 					<input type="checkbox" name="admin" value="CoAdmin">CoAdmin
-					<input type="checkbox" name="admin" value="User" checked>User</td>
+					<input type="checkbox" name="admin" value="User" >User</td>
 			</tr>
 			<tr>
 				<td>Message:</td>

@@ -1,3 +1,29 @@
+ var emailRegex = \b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b;
+
+
+
+}else if(document.getElementById("email").value != emailRegex ){
+				document.getElementById("var_email").innerHTML="Email format must be proper";
+				validate = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function formValidation()  
 {  
 var uid = document.registration.userid;  
