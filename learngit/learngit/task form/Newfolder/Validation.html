@@ -6,6 +6,24 @@
 Sign up form
 </title>
 
+<style>
+	.form_title{
+	 font-size:20px;
+	 color:#141823;
+	 text-align:center;
+	 padding:10px;
+	 font-weight:normal;
+	 }
+	 
+	 .field_set{
+	 background-color:lightblue;
+	 border:solid;
+	 width:800px;
+	 height:650px;
+	 text-align:center;
+	 margin-left:180px; 
+	 }
+</style>	 
 </head>
 <body>
 
@@ -13,89 +31,105 @@ Sign up form
 function revalidate()
 {
 	var validate= true;
-		//alert(document.getElementById("name").value);
-		if(document.getElementById("name").value == ""){
-			//alert(document.getElementById("name"));
-			document.getElementById("var_name").innerHTML="Name must be required";
-			//return(false);
-			validate = false;
-		}else{
-			document.getElementById("var_name").innerHTML="";
-		}
-		if(document.getElementById("email").value == ""){
-			document.getElementById("var_email").innerHTML="Email must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_email").innerHTML="";
-		}
-		if( document.getElementById("pwd").value == ""){
-			document.getElementById("var_pwd").innerHTML="Password must be required";
-			validate = false;
-		}else if( document.getElementById("pwd").value.length < 8){
-			document.getElementById("var_pwd").innerHTML="Password must be 8 characters";
-			validate = false;
-		}else{
-			document.getElementById("var_pwd").innerHTML="";
-		}
-		if(document.getElementById("cpwd").value == ""){
-			document.getElementById("var_cpwd").innerHTML="Password must be same";
-			validate = false;
-		}else{
-			document.getElementById("var_cpwd").innerHTML="";
-		}
-		if(document.getElementById("pwd").value != document.getElementById("cpwd").value){
-			document.getElementById("var_cpwd").innerHTML="Password must be same ";
-			validate = false;
-		}else{
-			document.getElementById("var_cpwd").innerHTML="";
-		}
-		if(document.getElementById("country").value == ""){
-			document.getElementById("var_country").innerHTML="Country must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_country").innerHTML="";
-		}
-		if(document.getElementById("birthday1").value == ""){
-			document.getElementById("var_birthday").innerHTML="Date of birth must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_birthday").innerHTML="";
-		}
-		if(document.getElementById("birthday2").value == ""){
-			document.getElementById("var_birthday").innerHTML="Date of birth must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_birthday").innerHTML="";
-		}
-		if(document.getElementById("birthday3").value == ""){
-			document.getElementById("var_birthday").innerHTML="Date of birth must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_birthday").innerHTML="";
-		}
-		if(document.getElementById("gender").checked == false && document.getElementById("gender1").checked == false){
-			document.getElementById("var_gender").innerHTML="Gender must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_gender").innerHTML="";
-		}
-		if(document.getElementById("admin").checked == false && document.getElementById("admin1").checked == false && document.getElementById("admin2").checked == false){
-			document.getElementById("var_admin").innerHTML="Admin type must be required";
-			validate = false;
-		}else{
-			document.getElementById("var_admin").innerHTML="";
-		}
-		
-		if(validate == false){
-			return(false);
-		}
-		return(true);
+			if(document.getElementById("name").value == ""){
+				document.getElementById("var_name").innerHTML="Name must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_name").innerHTML="";
+			}
+			
+			
+			if(document.getElementById("email").value == ""){
+				document.getElementById("var_email").innerHTML="Email must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_email").innerHTML="";
+			}
+			
+			
+			if( document.getElementById("pwd").value == ""){
+				document.getElementById("var_pwd").innerHTML="Password must be required";
+				validate = false;
+			}else if( document.getElementById("pwd").value.length < 8){
+				document.getElementById("var_pwd").innerHTML="Password must be 8 characters";
+				validate = false;
+			}else{
+				document.getElementById("var_pwd").innerHTML="";
+			}
+			
+			
+			if(document.getElementById("cpwd").value == ""){
+				document.getElementById("var_cpwd").innerHTML="Confirm Password must be required";
+				validate = false;
+			}else if(document.getElementById("pwd").value != document.getElementById("cpwd").value){
+				document.getElementById("var_cpwd").innerHTML="Password must be same ";
+				validate = false;
+			}else{
+				document.getElementById("var_cpwd").innerHTML="";
+			}
+			
+				
+			if(document.getElementById("country").value == ""){
+				document.getElementById("var_country").innerHTML="Country must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_country").innerHTML="";
+			}
+			
+			
+			if(document.getElementById("birthday1").value == ""){
+				document.getElementById("var_birthday").innerHTML="Date of birth must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_birthday").innerHTML="";
+			}
+			
+			
+			if(document.getElementById("birthday2").value == ""){
+				document.getElementById("var_birthday").innerHTML="Date of birth must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_birthday").innerHTML="";
+			}
+
+
+			if(document.getElementById("birthday3").value == ""){
+				document.getElementById("var_birthday").innerHTML="Date of birth must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_birthday").innerHTML="";
+			}
+			
+			
+			if(document.getElementById("gender").checked == false && document.getElementById("gender1").checked == false){
+				document.getElementById("var_gender").innerHTML="Gender must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_gender").innerHTML="";
+			}
+
+
+			if(document.getElementById("admin").checked == false && document.getElementById("admin1").checked == false && document.getElementById("admin2").checked == false){
+				document.getElementById("var_admin").innerHTML="Admin type must be required";
+				validate = false;
+			}else{
+				document.getElementById("var_admin").innerHTML="";
+			}
+
+
+			
+			if(validate == false){
+				return(false);
+			}
+
+
+			return(true);
 }		
 		
 </script>
 
-<form name="SignUpform" action="submitted.php" method="POST" onSubmit="return revalidate()">
-	<fieldset style="background-color:lightblue ; border:solid ; width:800px ; height:600px">
+<form name="SignUpform" class="form_title" action="submitted.php" method="POST" onSubmit="return revalidate()">
+	<fieldset class="field_set">
 	<legend><h1>Sign Up Form</h1></legend>
 		<table>
 			<tr>
