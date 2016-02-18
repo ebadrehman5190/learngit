@@ -22,7 +22,7 @@ Sign up form
 	 background-color:lightblue;
 	 border:solid;
 	 width:800px;
-	 height:650px;
+	 height:850px;
 	 text-align:center;
 	 margin-left:180px; 
 	 }
@@ -31,11 +31,12 @@ Sign up form
 <body>
 
 <script type="text/javascript">
-//function revalidate()
+function revalidate()
 {
-	//var validate= true;
-	//var str=document.getElementById("email").value;
-	//var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	
+	var validate= true;
+	var str=document.getElementById("email").value;
+	var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 			if(document.getElementById("name").value == ""){
 				document.getElementById("var_name").innerHTML="please enter the name";
 				validate = false;
@@ -67,7 +68,7 @@ Sign up form
 			
 			
 			if(document.getElementById("cpwd").value == ""){
-				document.getElementById("var_cpwd").innerHTML="Confirm Password must be required";
+				document.getElementById("var_cpwd").innerHTML="please enter the Confirm Password";
 				validate = false;
 			}else if(document.getElementById("pwd").value != document.getElementById("cpwd").value){
 				document.getElementById("var_cpwd").innerHTML="Password must be same";
@@ -149,6 +150,8 @@ $name=$email=$pwd=$cpwd=$country=$birthday=$gender=$admin=$message="";
 			$name = test_input($_POST["name"]);
 		}
 		
+		 
+		
 		if (empty($_POST["email"])){
 			$emailErr="email is required";
 		} else {
@@ -215,22 +218,22 @@ function test_input($data) {
 			<tr>
 				<td>Name:</td>
 				<td><input type="text" name="name" id="name" ></td>
-				<td><span id="var_name" style="color:red;"></span></td>
+				<td><span id="var_name" style="color:red;"><?php echo $nameErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
 				<td><input type="text" name="email" id="email"></td>
-				<td><span id="var_email" style="color:red;"></span></td>
+				<td><span id="var_email" style="color:red;"><?php echo $emailErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
 				<td><input type="text" name="pwd" id="pwd"></td>
-				<td><span id="var_pwd" style="color:red;"></span></td>
+				<td><span id="var_pwd" style="color:red;"><?php echo $pwdErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Confirm password:</td>
 				<td><input type="text" name="cpwd" id="cpwd"></td>
-				<td><span id="var_cpwd" style="color:red;"></span></td>
+				<td><span id="var_cpwd" style="color:red;"><?php echo $cpwdErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Country:</td>
@@ -493,7 +496,7 @@ function test_input($data) {
 						<option value="Zambia">Zambia</option>
 						<option value="Zimbabwe">Zimbabwe</option>
 					</select></td>
-				<td><span id="var_country" style="color:red;"></span></td>	
+				<td><span id="var_country" style="color:red;"><?php echo $countryErr;?></span></td>	
 			</tr>
 			<tr>
 				<td>D.O.B</td>
@@ -575,20 +578,20 @@ function test_input($data) {
 					  <option value="1991">1991</option>
 					  <option value="1990">1990</option>
 				</select></td>
-					<td><span id="var_birthday" style="color:red;"></span></td>
+					<td><span id="var_birthday" style="color:red;"><?php echo $birthdayErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Gender:</td>
 				<td><input type="radio" name="gender" id="gender" value="Male" >Male
 					<input type="radio" name="gender" id="gender1" value="Female">Female</td>
-					<td><span id="var_gender" style="color:red;"></span></td>
+					<td><span id="var_gender" style="color:red;"><?php echo $genderErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Admin type:</td>
 				<td><input type="checkbox" name="admin" id="admin" value="Admin">Admin
 					<input type="checkbox" name="admin" id="admin1" value="CoAdmin">CoAdmin
 					<input type="checkbox" name="admin" id="admin2" value="User" >User</td>
-					<td><span id="var_admin" style="color:red;"></span></td>
+					<td><span id="var_admin" style="color:red;"><?php echo $AdminErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Message:</td>
@@ -598,70 +601,29 @@ function test_input($data) {
 				<td><input type="submit" value="submit" ></td>
 			</tr>
 		</table>
-				
-		<span class="error"><?php echo $nameErr;?></span>
-		<br>
-		<span class="error"><?php echo $emailErr;?></span>
-		<br>
-		<span class="error"><?php echo $pwdErr;?></span>
-		<br>
-		<span class="error"><?php echo $cpwdErr;?></span>
-		<br>
-		<span class="error"><?php echo $countryErr;?></span>
-		<br>
-		<span class="error"><?php echo $birthdayErr;?></span>
-		<br>
-		<span class="error"><?php echo $genderErr;?></span>
-		<br>
-		<span class="error"><?php echo $AdminErr;?></span>
-		<br>
+		
+		
+		<?php
+		echo $name;
+		echo "<br>";
+		echo $email;
+		echo "<br>";
+		echo $pwd;
+		echo "<br>";
+		echo $cpwd;
+		echo "<br>";
+		echo $country;
+		echo "<br>";
+		echo $birthday;
+		echo "<br>";
+		echo $gender;
+		echo "<br>";
+		echo $admin;
+		echo "<br>";
+		echo $message;
+		?>
 	</fieldset>	
 </form>
-
-
-
-
-<span class="error"><?php echo $nameErr;?></span>
-<br>
-<span class="error"><?php echo $emailErr;?></span>
-<br>
-<span class="error"><?php echo $pwdErr;?></span>
-<br>
-<span class="error"><?php echo $cpwdErr;?></span>
-<br>
-<span class="error"><?php echo $countryErr;?></span>
-<br>
-<span class="error"><?php echo $birthdayErr;?></span>
-<br>
-<span class="error"><?php echo $genderErr;?></span>
-<br>
-<span class="error"><?php echo $AdminErr;?></span>
-<br>
-<?php
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $pwd;
-echo "<br>";
-echo $cpwd;
-echo "<br>";
-echo $country;
-echo "<br>";
-echo $birthday;
-echo "<br>";
-echo $gender;
-echo "<br>";
-echo $admin;
-echo "<br>";
-echo $message;
-?>
-
-
-
-
-
-
 
 </body>
 </html>
