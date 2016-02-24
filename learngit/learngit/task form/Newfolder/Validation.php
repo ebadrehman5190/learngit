@@ -211,9 +211,9 @@ function test_input($data) {
 }
 
 ?>
-<form name="SignUpform" class="form_title" action="" method="POST" onSubmit="return revalidate()">
+<form name="Registration" class="form_title" action="" method="POST" onSubmit="return revalidate()">
 	<fieldset class="field_set">
-	<legend><h1>Sign Up Form</h1></legend>
+	<legend><h1>Registration</h1></legend>
 		<table>
 			<tr>
 				<td>Name:</td>
@@ -227,12 +227,12 @@ function test_input($data) {
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><input type="text" name="pwd" id="pwd"></td>
+				<td><input type="password" name="pwd" id="pwd"></td>
 				<td><span id="var_pwd" style="color:red;"><?php echo $pwdErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Confirm password:</td>
-				<td><input type="text" name="cpwd" id="cpwd"></td>
+				<td><input type="password" name="cpwd" id="cpwd"></td>
 				<td><span id="var_cpwd" style="color:red;"><?php echo $cpwdErr;?></span></td>
 			</tr>
 			<tr>
@@ -604,6 +604,43 @@ function test_input($data) {
 		
 		
 		<?php
+		
+		if($_POST){
+		
+		//echo phpinfo();
+		//mysql_connect('host','user','password');
+		
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "test";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+//$select = mysqli_select_db('test');
+mysqli_select_db($conn,"test");
+$sql = "INSERT INTO SignUpForm (Name, Email, Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message)
+VALUES ('".$_POST['name']."', '".$_POST['email']."', '".$_POST['pwd']."', '".$_POST['cpwd']."', '".$_POST['country']."', '".$_POST['birthday']."', '".$_POST['gender']."', '".$_POST['admin']."', '".$_POST['message']."')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+		
+		
+		//$conn = mysqli_connect('localhost','root','');
+		
+		//echo $select;
+		
+		echo "<br>";
 		echo $name;
 		echo "<br>";
 		echo $email;
@@ -621,6 +658,7 @@ function test_input($data) {
 		echo $admin;
 		echo "<br>";
 		echo $message;
+		}
 		?>
 	</fieldset>	
 </form>
