@@ -628,6 +628,11 @@ function test_input($data) {
 		
 		<?php
 		
+					
+						
+						
+						
+					
 		if($_POST){
 		
 		//echo phpinfo();
@@ -639,21 +644,38 @@ function test_input($data) {
 		$dbname = "test";
 
 				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
+				$conn = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				} 
-
+				 
+				if(! $conn ) {
+				die('Could not connect: ' . mysqli_error());
+				}
+				
+				$userid = $_POST['userid'];
+				$Name = $_POST['fullname'];
+				$Email = $_POST['email'];
+				$Password = $_POST['pwd'];
+				$ConfirmPassword = $_POST['cpwd'];
+				$Country = $_POST['country'];
+				$Birthday = $_POST['birthday'];
+				$Gender = $_POST['gender'];
+				$Admin = $_POST['admin'];
+				$Message = $_POST['message'];
+								
+				$sql = "UPDATE SignUpForm SET Name = '".$Name."' , Email = '". $Email  ."' , Password = '". $Password  ."' , ConfirmPassword = '". $ConfirmPassword  ."' , Country = '". $Country  ."' , Birthday = '". $Birthday  ."' , Gender = '". $Gender  ."' , Admin = '". $Admin  ."' , Message = '". $Message ."' ".
+				"WHERE userid = $userid";
+				
+				
+				
+				
 				//$select = mysqli_select_db('test');
 				mysqli_select_db($conn,"test");
-				$sql = "INSERT INTO SignUpForm (Userid, Name, Email, Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message)
-				VALUES ('".$_POST['userid']."','".$_POST['fullname']."', '".$_POST['email']."', '".$_POST['pwd']."', '".$_POST['cpwd']."', '".$_POST['country']."', '".$_POST['birthday']."', '".$_POST['gender']."', '".$_POST['admin']."', '".$_POST['message']."')";
-
-				if ($conn->query($sql) === TRUE) {
-					echo "New record created successfully";
+				
+				
+				if (mysqli_query($conn,$sql)) {
+					echo "Record updated successfully";
 				} else {
-					echo "Error: " . $sql . "<br>" . $conn->error;
+					echo "Error updating record: " . mysqli_error($conn);
 				}
 
 				$conn->close();
