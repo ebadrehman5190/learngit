@@ -1,3 +1,29 @@
+<?php
+
+$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "test";
+
+				// Create connection
+				$conn = new mysqli($servername, $username, $password, $dbname);
+				// Check connection
+				if ($conn->connect_error) {
+					die("Connection failed: " . $conn->connect_error);
+				} 
+
+				//$select = mysqli_select_db('test');
+				mysqli_select_db($conn,"test");
+				
+				$edit = "SELECT userid,Name,Email,Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message FROM SignUpForm WHERE userid='". $_GET['id'] ."' ";
+
+				$record = mysqli_query($conn,$edit);
+				$data = mysqli_fetch_array($record);
+				
+			if (isset($data)){
+				//echo "SELECT u	serid,Name,Email,Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message FROM SignUpForm WHERE userid='". $_GET['id'] ."' " ;
+			}
+?>
 <!doctype html>
 <html>
 <head>
@@ -235,17 +261,17 @@ function test_input($data) {
 		<table>
 			<tr>
 				<td>UserName:</td>
-				<td><input type="text" name="userid" id="userid" ></td>
+				<td><input type="text" name="userid" id="userid" value="<?php if(isset($data['userid'])){ echo $data['userid']; } ?>"></td>
 				<td><span id="var_userid" style="color:red;"><?php echo $useridErr;?></span></td>
 			</tr>
 			<tr>
 				<td>FullName:</td>
-				<td><input type="text" name="fullname" id="fullname" ></td>
+				<td><input type="text" name="fullname" id="fullname" value="<?php if(isset($data['Name'])){ echo $data['Name']; } ?>" ></td>
 				<td><span id="var_fullname" style="color:red;"><?php echo $fullnameErr;?></span></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td><input type="text" name="email" id="email"></td>
+				<td><input type="text" name="email" id="email" value="<?php if(isset($data['Email'])){ echo $data['Email']; } ?>" ></td>
 				<td><span id="var_email" style="color:red;"><?php echo $emailErr;?></span></td>
 			</tr>
 			<tr>
@@ -261,7 +287,7 @@ function test_input($data) {
 			<tr>
 				<td>Country:</td>
 				<td>
-					<select name="country" id="country">
+					<select name="country" id="country" value="<?php if(isset($data['Country'])){ echo $data['Country']; } ?>" selected>
 						<option value="">Select country</option>
 						<option value="United States of America">United States of America</option>
 						<option value="United Kingdom">United Kingdom</option>
@@ -618,7 +644,7 @@ function test_input($data) {
 			</tr>
 			<tr>
 				<td>Message:</td>
-				<td><textarea name="message" rows="5" cols="40"></textarea></td>
+				<td><textarea name="message" rows="5" cols="40"><?php if(isset($data['Message'])){ echo $data['Message']; } ?></textarea></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="submit" ></td>
@@ -647,11 +673,16 @@ function test_input($data) {
 
 				//$select = mysqli_select_db('test');
 				mysqli_select_db($conn,"test");
-				$sql = "INSERT INTO SignUpForm (Userid, Name, Email, Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message)
+				$new = "INSERT INTO SignUpForm (Userid, Name, Email, Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message)
 				VALUES ('".$_POST['userid']."','".$_POST['fullname']."', '".$_POST['email']."', '".$_POST['pwd']."', '".$_POST['cpwd']."', '".$_POST['country']."', '".$_POST['birthday']."', '".$_POST['gender']."', '".$_POST['admin']."', '".$_POST['message']."')";
 
-				if ($conn->query($sql) === TRUE) {
+				$sql = "UPDATE SignUpForm SET Name = '".$_POST['fullname']."' , Email = '".$_POST['email']."' , Password = '".$_POST['pwd']."' , ConfirmPassword = '".$_POST['cpwd']."' , Country = '".$_POST['country']."' , Birthday = '".$_POST['birthday']."' , Gender = '".$_POST['gender']."' , Admin = '".$_POST['admin']."' , Message = '".$_POST['message']."' ".
+				"WHERE userid = '". $userid ."' ";
+				
+				if ($conn->query($new) === TRUE) {
 					echo "New record created successfully";
+				} elseif ($conn->query($sql) === TRUE) {
+					echo "New updated record";
 				} else {
 					echo "Error: " . $sql . "<br>" . $conn->error;
 				}

@@ -42,7 +42,7 @@
 		echo '<td>' . $row['Admin'] . '</td>';
 		echo '<td>' . $row['Message'] . '</td>';
 			?>	
-		<td><input type="button" value="edit" onclick="window.location='EditProfile.php'" ></td>
+		<td><input type="button" value="edit" onclick="window.location='Validation.php?id=<?php echo $row['userid']; ?>'" ></td>
 		<td><input type="button" value="del" onclick="window.location='del_process.php?id=<?php echo $row['userid']; ?>'" ></td>
 		<?php
 		echo '</tr>';
