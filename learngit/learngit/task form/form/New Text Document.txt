@@ -1,0 +1,13 @@
+TASKS
+1-create form
+2-apply javascipt validation
+3-apply php validation
+4-connect with mysql database
+5-create a data base table 
+6-show data on php page
+7-create edit and delete button
+8-aplly all changes in form if edit a user data
+9-create a login page and match username and password
+10-when a user login show php data table 
+11-in php data table create a log out button
+12-create an option to delete multiple user data  
