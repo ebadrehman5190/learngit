@@ -57,7 +57,7 @@
 		
 		<input name="delete" type="submit" id="delete" value="Delete">
 		</form>
-		<pre>
+		
 	<?php
 	
 	

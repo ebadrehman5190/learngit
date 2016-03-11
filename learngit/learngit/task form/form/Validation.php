@@ -15,10 +15,18 @@ $servername = "localhost";
 				//$select = mysqli_select_db('test');
 				mysqli_select_db($conn,"test");
 				
-				$edit = "SELECT user,Name,Email,Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
-
+				$edit = "SELECT user,Name,Email,Password,ConfirmPassword,Country,Gender,Admin,Message FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
+				$dob = "SELECT Birthday FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
+				
 				$record = mysqli_query($conn,$edit);
 				$data = mysqli_fetch_array($record);
+				
+				$dob1 = mysqli_query($conn,$dob);
+				$dob2 = mysqli_fetch_array($dob1);
+				
+				$dob2 =explode('-','birthday');
+				echo $dob2;
+				//echo explode($conn,$edit);
 				
 			if (isset($data)){
 				//echo "SELECT u	serid,Name,Email,Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message FROM SignUpForm WHERE user='". $_GET['id'] ."' " ;
@@ -47,7 +55,7 @@ Sign up form
 	 .field_set{	 
 	 border:solid;
 	 width:800px;
-	 height:850px;
+	 height:950px;
 	 text-align:center;
 	 margin-left:180px; 
 	 }
@@ -254,7 +262,7 @@ function test_input($data) {
 ?>
 <form name="Registration" class="form_title" action="" method="POST" onSubmit="return revalidate()">
 	<fieldset class="field_set" src="SMWpCenterPinch.png">
-	<legend><h1>Registration</h1></legend>
+	<legend><h1>Sign up form</h1></legend>
 		<table>
 			<tr>
 				<td>UserName:</td>
@@ -547,83 +555,83 @@ function test_input($data) {
 			<tr>
 				<td>D.O.B</td>
 				<td>
-				<select name="birthday" id="birthday1" value="year">
-					<option value="" selected >year</option>
-					  <option value="2015">2015</option>
-					  <option value="2014">2014</option>
-					  <option value="2013">2013</option>
-					  <option value="2012">2012</option>
-					  <option value="2011">2011</option>
-					  <option value="2010">2010</option>
-					  <option value="2009">2009</option>
-					  <option value="2008">2008</option>
-					  <option value="2007">2007</option>
-					  <option value="2006">2006</option>
-					  <option value="2005">2005</option>
-					  <option value="2004">2004</option>
-					  <option value="2003">2003</option>
-					  <option value="2002">2002</option>
-					  <option value="2001">2001</option>
-					  <option value="2000">2000</option>
-					  <option value="1999">1999</option>
-					  <option value="1998">1998</option>
-					  <option value="1997">1997</option>
-					  <option value="1996">1996</option>
-					  <option value="1995">1995</option>
-					  <option value="1994">1994</option>
-					  <option value="1993">1993</option>
-					  <option value="1992">1992</option>
-					  <option value="1991">1991</option>
-					  <option value="1990">1990</option>
+				<select name="birthday[]" id="birthday1" value="year" selected="<?php if(isset($dob2['birthday'])){ echo $dob2['birthday']; } ?>">
+					<option value="" >year</option>
+					  <option value="2015" <?php if($dob2 == "2015") echo "selected"; ?>>2015</option>
+					  <option value="2014" <?php if($dob2 == "2014") echo "selected"; ?>>2014</option>
+					  <option value="2013" <?php if($dob2 == "2013") echo "selected"; ?>>2013</option>
+					  <option value="2012" <?php if($dob2 == "2012") echo "selected"; ?>>2012</option>
+					  <option value="2011" <?php if($dob2 == "2011") echo "selected"; ?>>2011</option>
+					  <option value="2010" <?php if($dob2 == "2010") echo "selected"; ?>>2010</option>
+					  <option value="2009" <?php if($dob2 == "2009") echo "selected"; ?>>2009</option>
+					  <option value="2008" <?php if($dob2 == "2008") echo "selected"; ?>>2008</option>
+					  <option value="2007" <?php if($dob2 == "2007") echo "selected"; ?>>2007</option>
+					  <option value="2006" <?php if($dob2 == "2006") echo "selected"; ?>>2006</option>
+					  <option value="2005" <?php if($dob2 == "2005") echo "selected"; ?>>2005</option>
+					  <option value="2004" <?php if($dob2 == "2004") echo "selected"; ?>>2004</option>
+					  <option value="2003" <?php if($dob2 == "2003") echo "selected"; ?>>2003</option>
+					  <option value="2002" <?php if($dob2 == "2002") echo "selected"; ?>>2002</option>
+					  <option value="2001" <?php if($dob2 == "2001") echo "selected"; ?>>2001</option>
+					  <option value="2000" <?php if($dob2 == "2000") echo "selected"; ?>>2000</option>
+					  <option value="1999" <?php if($dob2 == "1999") echo "selected"; ?>>1999</option>
+					  <option value="1998" <?php if($dob2 == "1998") echo "selected"; ?>>1998</option>
+					  <option value="1997" <?php if($dob2 == "1997") echo "selected"; ?>>1997</option>
+					  <option value="1996" <?php if($dob2 == "1996") echo "selected"; ?>>1996</option>
+					  <option value="1995" <?php if($dob2 == "1995") echo "selected"; ?>>1995</option>
+					  <option value="1994" <?php if($dob2 == "1994") echo "selected"; ?>>1994</option>
+					  <option value="1993" <?php if($dob2 == "1993") echo "selected"; ?>>1993</option>
+					  <option value="1992" <?php if($dob2 == "1992") echo "selected"; ?>>1992</option>
+					  <option value="1991" <?php if($dob2 == "1991") echo "selected"; ?>>1991</option>
+					  <option value="1990" <?php if($dob2 == "1990") echo "selected"; ?>>1990</option>
 				</select>
-				<select name="birthday" id="birthday2" value="month">
+				<select name="birthday[]" id="birthday2" value="month" selected="<?php if(isset($dob2['birthday'])){ echo $dob2['birthday']; } ?>">
 					<option value="" selected >Month</option>
-					<option value="1">Jan</option>
-					<option value="2">Feb</option>
-					<option value="3">Mar</option>
-					<option value="4">Apr</option>
-					<option value="5">May</option>
-					<option value="6">Jun</option>
-					<option value="7">July</option>
-					<option value="8">Aug</option>
-					<option value="9">Sep</option>
-					<option value="10">Oct</option>
-					<option value="11">Nov</option>
-					<option value="12">Dec</option>
+					<option value="Jan" <?php if($dob2 == "Jan") echo "selected"; ?>>Jan</option>
+					<option value="Feb" <?php if($dob2 == "Feb") echo "selected"; ?>>Feb</option>
+					<option value="Mar" <?php if($dob2 == "Mar") echo "selected"; ?>>Mar</option>
+					<option value="Apr" <?php if($dob2 == "Apr") echo "selected"; ?>>Apr</option>
+					<option value="May" <?php if($dob2 == "May") echo "selected"; ?>>May</option>
+					<option value="Jun" <?php if($dob2 == "Jun") echo "selected"; ?>>Jun</option>
+					<option value="July" <?php if($dob2 == "July") echo "selected"; ?>>July</option>
+					<option value="Aug" <?php if($dob2 == "Aug") echo "selected"; ?>>Aug</option>
+					<option value="Sep" <?php if($dob2 == "Sep") echo "selected"; ?>>Sep</option>
+					<option value="Oct" <?php if($dob2 == "Oct") echo "selected"; ?>>Oct</option>
+					<option value="Nov" <?php if($dob2 == "Nov") echo "selected"; ?>>Nov</option>
+					<option value="Dec" <?php if($dob2 == "Dec") echo "selected"; ?>>Dec</option>
 				</select>
-				<select name="birthday" id="birthday3" value="date">
+				<select name="birthday[]" id="birthday3" value="date"selected="<?php if(isset($dob2['birthday'])){ echo $dob2['birthday']; } ?>">
 					<option value="" selected >Day</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="22">22</option>
-					<option value="23">23</option>
-					<option value="24">24</option>
-					<option value="25">25</option>
-					<option value="26">26</option>
-					<option value="27">27</option>
-					<option value="28">28</option>
-					<option value="29">29</option>
-					<option value="30">30</option>
-					<option value="31">31</option>
+					<option value="1" <?php if($dob2 == "1") echo "selected"; ?>>1</option>
+					<option value="2" <?php if($dob2 == "2") echo "selected"; ?>>2</option>
+					<option value="3" <?php if($dob2 == "3") echo "selected"; ?>>3</option>
+					<option value="4" <?php if($dob2 == "4") echo "selected"; ?>>4</option>
+					<option value="5" <?php if($dob2 == "5") echo "selected"; ?>>5</option>
+					<option value="6" <?php if($dob2 == "6") echo "selected"; ?>>6</option>
+					<option value="7" <?php if($dob2 == "7") echo "selected"; ?>>7</option>
+					<option value="8" <?php if($dob2 == "8") echo "selected"; ?>>8</option>
+					<option value="9" <?php if($dob2 == "9") echo "selected"; ?>>9</option>
+					<option value="10" <?php if($dob2 == "10") echo "selected"; ?>>10</option>
+					<option value="11" <?php if($dob2 == "11") echo "selected"; ?>>11</option>
+					<option value="12" <?php if($dob2 == "12") echo "selected"; ?>>12</option>
+					<option value="13" <?php if($dob2 == "13") echo "selected"; ?>>13</option>
+					<option value="14" <?php if($dob2 == "14") echo "selected"; ?>>14</option>
+					<option value="15" <?php if($dob2 == "15") echo "selected"; ?>>15</option>
+					<option value="16" <?php if($dob2 == "16") echo "selected"; ?>>16</option>
+					<option value="17" <?php if($dob2 == "17") echo "selected"; ?>>17</option>
+					<option value="18" <?php if($dob2 == "18") echo "selected"; ?>>18</option>
+					<option value="19" <?php if($dob2 == "19") echo "selected"; ?>>19</option>
+					<option value="20" <?php if($dob2 == "20") echo "selected"; ?>>20</option>
+					<option value="21" <?php if($dob2 == "21") echo "selected"; ?>>21</option>
+					<option value="22" <?php if($dob2 == "22") echo "selected"; ?>>22</option>
+					<option value="23" <?php if($dob2 == "23") echo "selected"; ?>>23</option>
+					<option value="24" <?php if($dob2 == "24") echo "selected"; ?>>24</option>
+					<option value="25" <?php if($dob2 == "25") echo "selected"; ?>>25</option>
+					<option value="26" <?php if($dob2 == "26") echo "selected"; ?>>26</option>
+					<option value="27" <?php if($dob2 == "27") echo "selected"; ?>>27</option>
+					<option value="28" <?php if($dob2 == "28") echo "selected"; ?>>28</option>
+					<option value="29" <?php if($dob2 == "29") echo "selected"; ?>>29</option>
+					<option value="30" <?php if($dob2 == "30") echo "selected"; ?>>30</option>
+					<option value="31" <?php if($dob2 == "31") echo "selected"; ?>>31</option>
 				</select></td>
 					<td><span id="var_birthday" style="color:red;"><?php echo $birthdayErr;?></span></td>
 			</tr>
@@ -657,7 +665,7 @@ function test_input($data) {
 		
 		if($_POST){
 			
-		echo '<pre>'; print_r($_POST);
+		//echo '<pre>'; print_r($_POST);
 		
 		//echo phpinfo();
 		//mysql_connect('host','user','password');
@@ -674,12 +682,20 @@ function test_input($data) {
 					die("Connection failed: " . $conn->connect_error);
 				} 
 
+				//$birth=$_POST['birthday'];
+				$birth_joined=implode('-',$_POST['birthday']);
+				
+				//$deds=$_POST['deductions'];
+				//$deds_joined=join(',',$deds);
+				//$sql=mysql_query("insert into mytable(deduction) values($deds_joined)");
+				
+				
 				//$select = mysqli_select_db('test');
 				mysqli_select_db($conn,"test");
 				$new = "INSERT INTO SignUpForm (user, Name, Email, Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message)
-				VALUES ('".$_POST['user']."','".$_POST['fullname']."', '".$_POST['email']."', '".$_POST['pwd']."', '".$_POST['cpwd']."', '".$_POST['country']."', '".$_POST['birthday']."', '".$_POST['gender']."', '".$_POST['admin']."', '".$_POST['message']."')";
+				VALUES ('".$_POST['user']."','".$_POST['fullname']."', '".$_POST['email']."', '".$_POST['pwd']."', '".$_POST['cpwd']."', '".$_POST['country']."', '".$birth_joined."', '".$_POST['gender']."', '".$_POST['admin']."', '".$_POST['message']."')";
 
-				$sql = "UPDATE SignUpForm SET Name = '".$_POST['fullname']."' , Email = '".$_POST['email']."' , Password = '".$_POST['pwd']."' , ConfirmPassword = '".$_POST['cpwd']."' , Country = '".$_POST['country']."' , Birthday = '".$_POST['birthday']."' , Gender = '".$_POST['gender']."' , Admin = '".$_POST['admin']."' , Message = '".$_POST['message']."' ".
+				$sql = "UPDATE SignUpForm SET Name = '".$_POST['fullname']."' , Email = '".$_POST['email']."' , Password = '".$_POST['pwd']."' , ConfirmPassword = '".$_POST['cpwd']."' , Country = '".$_POST['country']."' , Birthday = '".$birth_joined."' , Gender = '".$_POST['gender']."' , Admin = '".$_POST['admin']."' , Message = '".$_POST['message']."' ".
 				"WHERE user = '". $user ."' ";
 				
 				if ($conn->query($new) === TRUE) {
