@@ -61,6 +61,8 @@
 	<?php
 	
 	
+	$later="";
+	
 	if($_POST['delete']){
 		
 		foreach($_POST['checkbox'] as $key => $val){

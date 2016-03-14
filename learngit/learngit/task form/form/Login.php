@@ -1,6 +1,25 @@
 <?php
 
-$servername = "localhost";
+
+
+session_start();
+
+
+if(isset($_SESSION['login_user'])){
+header("location: forget.php");
+}
+
+$error = "";
+
+if(isset($_POST['submit'])){
+	if(empty($_POST['user']) || empty($_POST['Pwd'])){
+		$error = "Username and Password is invalid";
+	}else{
+		$user = $_POST['user'];
+		$Pwd = $_POST['Pwd'];
+
+
+        $servername = "localhost";
 		$username = "root";
 		$password = "";
 		$dbname = "test";
@@ -11,6 +30,24 @@ $servername = "localhost";
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				} 
+						
+				mysqli_select_db($conn,"test");
+				
+				$login=("SELECT user,Password FROM SignUpForm WHERE user='".$user."'AND Password='".$Pwd."' ");
+				$check = mysqli_query($conn,$login);
+				$rows = mysqli_fetch_array($check);
+				
+				if ($rows == 1){
+					$_SESSION['login_user'] = $user;
+					header("location: forget.php");
+				}else{
+					$error="Username and Password is invalid";
+				}
+				
+				
+		$conn->close();
+	}
+}
 
 ?>
 <doctype html>
@@ -39,7 +76,7 @@ $servername = "localhost";
 </style>
 </head>
 <body>
-<form>
+<form name="Login" action="forget.php" method="POST">
 
 	<fieldset class="field_set">
 	<h1>Login</h1>
@@ -57,7 +94,8 @@ $servername = "localhost";
 		</tr>
 		
 		<tr>
-			<td><input type="submit" value="submit" ></td>
+			<td><input type="submit" name="login" value="Login"></td>
+			<td><span><?php echo $error; ?></span></td>
 		</tr>
 	</table>	
 	</fieldset>
