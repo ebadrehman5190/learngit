@@ -1,6 +1,6 @@
 <?php
 
-$_GET['id'] = "";
+//$_GET['id'] = "";
 
 		$servername = "localhost";
 		$username = "root";
@@ -25,9 +25,10 @@ $_GET['id'] = "";
 				
 				$dob1 = mysqli_query($conn,$dob);
 				$dob2 = mysqli_fetch_array($dob1);
+				//echo "SELECT Birthday FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
+				$dob2 = explode('-',$dob2[0]);
 				
-				$dob2 = explode('-',$dob);
-				//print_r($dob2);
+				
 				//echo explode($conn,$edit);
 				
 			if (isset($data)){
@@ -588,52 +589,52 @@ function test_input($data) {
 				</select>
 				<select name="birthday[]" id="birthday2" value="month" selected="<?php if(isset($dob2['birthday'])){ echo $dob2['birthday']; } ?>">
 					<option value="" selected >Month</option>
-					<option value="Jan" <?php if($dob2 == "Jan") echo "selected"; ?>>Jan</option>
-					<option value="Feb" <?php if($dob2 == "Feb") echo "selected"; ?>>Feb</option>
-					<option value="Mar" <?php if($dob2 == "Mar") echo "selected"; ?>>Mar</option>
-					<option value="Apr" <?php if($dob2 == "Apr") echo "selected"; ?>>Apr</option>
-					<option value="May" <?php if($dob2 == "May") echo "selected"; ?>>May</option>
-					<option value="Jun" <?php if($dob2 == "Jun") echo "selected"; ?>>Jun</option>
-					<option value="July" <?php if($dob2 == "July") echo "selected"; ?>>July</option>
-					<option value="Aug" <?php if($dob2 == "Aug") echo "selected"; ?>>Aug</option>
-					<option value="Sep" <?php if($dob2 == "Sep") echo "selected"; ?>>Sep</option>
-					<option value="Oct" <?php if($dob2 == "Oct") echo "selected"; ?>>Oct</option>
-					<option value="Nov" <?php if($dob2 == "Nov") echo "selected"; ?>>Nov</option>
-					<option value="Dec" <?php if($dob2 == "Dec") echo "selected"; ?>>Dec</option>
+					<option value="Jan" <?php if($dob2[1] == "Jan") echo "selected"; ?>>Jan</option>
+					<option value="Feb" <?php if($dob2[1] == "Feb") echo "selected"; ?>>Feb</option>
+					<option value="Mar" <?php if($dob2[1] == "Mar") echo "selected"; ?>>Mar</option>
+					<option value="Apr" <?php if($dob2[1] == "Apr") echo "selected"; ?>>Apr</option>
+					<option value="May" <?php if($dob2[1] == "May") echo "selected"; ?>>May</option>
+					<option value="Jun" <?php if($dob2[1] == "Jun") echo "selected"; ?>>Jun</option>
+					<option value="July" <?php if($dob2[1] == "July") echo "selected"; ?>>July</option>
+					<option value="Aug" <?php if($dob2[1] == "Aug") echo "selected"; ?>>Aug</option>
+					<option value="Sep" <?php if($dob2[1] == "Sep") echo "selected"; ?>>Sep</option>
+					<option value="Oct" <?php if($dob2[1] == "Oct") echo "selected"; ?>>Oct</option>
+					<option value="Nov" <?php if($dob2[1] == "Nov") echo "selected"; ?>>Nov</option>
+					<option value="Dec" <?php if($dob2[1] == "Dec") echo "selected"; ?>>Dec</option>
 				</select>
 				<select name="birthday[]" id="birthday3" value="date"selected="<?php if(isset($dob2['birthday'])){ echo $dob2['birthday']; } ?>">
 					<option value="" selected >Day</option>
-					<option value="1" <?php if($dob2 == "1") echo "selected"; ?>>1</option>
-					<option value="2" <?php if($dob2 == "2") echo "selected"; ?>>2</option>
-					<option value="3" <?php if($dob2 == "3") echo "selected"; ?>>3</option>
-					<option value="4" <?php if($dob2 == "4") echo "selected"; ?>>4</option>
-					<option value="5" <?php if($dob2 == "5") echo "selected"; ?>>5</option>
-					<option value="6" <?php if($dob2 == "6") echo "selected"; ?>>6</option>
-					<option value="7" <?php if($dob2 == "7") echo "selected"; ?>>7</option>
-					<option value="8" <?php if($dob2 == "8") echo "selected"; ?>>8</option>
-					<option value="9" <?php if($dob2 == "9") echo "selected"; ?>>9</option>
-					<option value="10" <?php if($dob2 == "10") echo "selected"; ?>>10</option>
-					<option value="11" <?php if($dob2 == "11") echo "selected"; ?>>11</option>
-					<option value="12" <?php if($dob2 == "12") echo "selected"; ?>>12</option>
-					<option value="13" <?php if($dob2 == "13") echo "selected"; ?>>13</option>
-					<option value="14" <?php if($dob2 == "14") echo "selected"; ?>>14</option>
-					<option value="15" <?php if($dob2 == "15") echo "selected"; ?>>15</option>
-					<option value="16" <?php if($dob2 == "16") echo "selected"; ?>>16</option>
-					<option value="17" <?php if($dob2 == "17") echo "selected"; ?>>17</option>
-					<option value="18" <?php if($dob2 == "18") echo "selected"; ?>>18</option>
-					<option value="19" <?php if($dob2 == "19") echo "selected"; ?>>19</option>
-					<option value="20" <?php if($dob2 == "20") echo "selected"; ?>>20</option>
-					<option value="21" <?php if($dob2 == "21") echo "selected"; ?>>21</option>
-					<option value="22" <?php if($dob2 == "22") echo "selected"; ?>>22</option>
-					<option value="23" <?php if($dob2 == "23") echo "selected"; ?>>23</option>
-					<option value="24" <?php if($dob2 == "24") echo "selected"; ?>>24</option>
-					<option value="25" <?php if($dob2 == "25") echo "selected"; ?>>25</option>
-					<option value="26" <?php if($dob2 == "26") echo "selected"; ?>>26</option>
-					<option value="27" <?php if($dob2 == "27") echo "selected"; ?>>27</option>
-					<option value="28" <?php if($dob2 == "28") echo "selected"; ?>>28</option>
-					<option value="29" <?php if($dob2 == "29") echo "selected"; ?>>29</option>
-					<option value="30" <?php if($dob2 == "30") echo "selected"; ?>>30</option>
-					<option value="31" <?php if($dob2 == "31") echo "selected"; ?>>31</option>
+					<option value="1" <?php if($dob2[2] == "1") echo "selected"; ?>>1</option>
+					<option value="2" <?php if($dob2[2] == "2") echo "selected"; ?>>2</option>
+					<option value="3" <?php if($dob2[2] == "3") echo "selected"; ?>>3</option>
+					<option value="4" <?php if($dob2[2] == "4") echo "selected"; ?>>4</option>
+					<option value="5" <?php if($dob2[2] == "5") echo "selected"; ?>>5</option>
+					<option value="6" <?php if($dob2[2] == "6") echo "selected"; ?>>6</option>
+					<option value="7" <?php if($dob2[2] == "7") echo "selected"; ?>>7</option>
+					<option value="8" <?php if($dob2[2] == "8") echo "selected"; ?>>8</option>
+					<option value="9" <?php if($dob2[2] == "9") echo "selected"; ?>>9</option>
+					<option value="10" <?php if($dob2[2] == "10") echo "selected"; ?>>10</option>
+					<option value="11" <?php if($dob2[2] == "11") echo "selected"; ?>>11</option>
+					<option value="12" <?php if($dob2[2] == "12") echo "selected"; ?>>12</option>
+					<option value="13" <?php if($dob2[2] == "13") echo "selected"; ?>>13</option>
+					<option value="14" <?php if($dob2[2] == "14") echo "selected"; ?>>14</option>
+					<option value="15" <?php if($dob2[2] == "15") echo "selected"; ?>>15</option>
+					<option value="16" <?php if($dob2[2] == "16") echo "selected"; ?>>16</option>
+					<option value="17" <?php if($dob2[2] == "17") echo "selected"; ?>>17</option>
+					<option value="18" <?php if($dob2[2] == "18") echo "selected"; ?>>18</option>
+					<option value="19" <?php if($dob2[2] == "19") echo "selected"; ?>>19</option>
+					<option value="20" <?php if($dob2[2] == "20") echo "selected"; ?>>20</option>
+					<option value="21" <?php if($dob2[2] == "21") echo "selected"; ?>>21</option>
+					<option value="22" <?php if($dob2[2] == "22") echo "selected"; ?>>22</option>
+					<option value="23" <?php if($dob2[2] == "23") echo "selected"; ?>>23</option>
+					<option value="24" <?php if($dob2[2] == "24") echo "selected"; ?>>24</option>
+					<option value="25" <?php if($dob2[2] == "25") echo "selected"; ?>>25</option>
+					<option value="26" <?php if($dob2[2] == "26") echo "selected"; ?>>26</option>
+					<option value="27" <?php if($dob2[2] == "27") echo "selected"; ?>>27</option>
+					<option value="28" <?php if($dob2[2] == "28") echo "selected"; ?>>28</option>
+					<option value="29" <?php if($dob2[2] == "29") echo "selected"; ?>>29</option>
+					<option value="30" <?php if($dob2[2] == "30") echo "selected"; ?>>30</option>
+					<option value="31" <?php if($dob2[2] == "31") echo "selected"; ?>>31</option>
 				</select></td>
 					<td><span id="var_birthday" style="color:red;"><?php echo $birthdayErr;?></span></td>
 			</tr>
