@@ -1,3 +1,8 @@
+
+<?php
+include('session.php');
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -57,7 +62,7 @@
 		<br>
 		<input name="delete" type="submit" id="delete" value="Delete">
 		<br><br>
-		<input name="logout" type="button" id="logout" value="logout" onclick="window.location='Login.php'" >
+		<input name="logout" type="button" id="logout" value="logout" onclick="window.location='logout.php'" >
 		</form>
 		
 	<?php
