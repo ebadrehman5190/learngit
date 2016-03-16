@@ -1,53 +1,44 @@
 <?php
-
-
-
 session_start();
 
+	$error = "";
 
-if(isset($_SESSION['login_user'])){
-header("location: forget.php");
-}
+	if(isset($_POST['login'])){
+		//die('here');
+		if(empty($_POST['user']) || empty($_POST['pwd'])){
+			//die('gwvf');
+			$error = "Username or Password is empety";
+		}else{
+			//die('j');
+			$user = $_POST['user'];
+			$pwd = $_POST['pwd'];
 
-$error = "";
-
-if(isset($_POST['submit'])){
-	if(empty($_POST['user']) || empty($_POST['Pwd'])){
-		$error = "Username and Password is invalid";
-	}else{
-		$user = $_POST['user'];
-		$Pwd = $_POST['Pwd'];
-
-
-        $servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "test";
-
-				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
-				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				} 
-						
+				$conn = mysqli_connect('localhost','root','','test');
 				mysqli_select_db($conn,"test");
-				
-				$login=("SELECT user,Password FROM SignUpForm WHERE user='".$user."'AND Password='".$Pwd."' ");
-				$check = mysqli_query($conn,$login);
-				$rows = mysqli_fetch_array($check);
-				
-				if ($rows == 1){
-					$_SESSION['login_user'] = $user;
-					header("location: forget.php");
-				}else{
-					$error="Username and Password is invalid";
-				}
-				
-				
-		$conn->close();
-	}
+
+											
+					$login=("SELECT * FROM SignUpForm WHERE user='$user'AND Password='$pwd' ");
+					$check = mysqli_query($conn,$login);
+					$rows = mysqli_num_rows($check);
+					
+					//echo "SELECT * FROM signupform WHERE user='$user' AND Password='$pwd' "	;			
+					//die;
+					
+					if ($rows == 1){
+						$_SESSION['login_user']=$user;
+						header("location:forget.php");
+					}else{
+						$error="Username and Password is invalid";
+					}
+					
+					
+			$conn->close();
+		}
 }
+
+
+
+//print_r($_SESSION);
 
 ?>
 <doctype html>
@@ -61,11 +52,11 @@ if(isset($_POST['submit'])){
 	 .field_set{
 	 background-color:white;
 	 border:solid;
-	 width:500px;
-	 height:500px;
+	 width:400px;
+	 height:200px;
 	 text-align:center;
-	 margin-left:700px; 
-	 margin-top:100px;
+	 margin-left:800px; 
+	 margin-top:150px;
 	 }
 	 
 	 
@@ -76,14 +67,14 @@ if(isset($_POST['submit'])){
 </style>
 </head>
 <body>
-<form name="Login" action="forget.php" method="POST">
+<form action="" method="POST">
 
 	<fieldset class="field_set">
 	<h1>Login</h1>
 	<table>
 		<tr>
 			<td><b>User:</td>
-			<td><input type="text" name="uesr" id="user"></td>
+			<td><input type="text" name="user" id="user"></td>
 		</tr>
 		
 		<tr></tr>
@@ -95,7 +86,7 @@ if(isset($_POST['submit'])){
 		
 		<tr>
 			<td><input type="submit" name="login" value="Login"></td>
-			<td><span><?php echo $error; ?></span></td>
+			<td><span class="error"><?php echo $error; ?></span></td>
 		</tr>
 	</table>	
 	</fieldset>

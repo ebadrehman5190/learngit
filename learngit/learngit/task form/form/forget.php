@@ -54,8 +54,10 @@
 		}
 		echo '</table>';
 		?>
-		
+		<br>
 		<input name="delete" type="submit" id="delete" value="Delete">
+		<br><br>
+		<input name="logout" type="button" id="logout" value="logout" onclick="window.location='Login.php'" >
 		</form>
 		
 	<?php
@@ -63,7 +65,8 @@
 	
 	$later="";
 	
-	if($_POST['delete']){
+	
+	if(isset($_POST['delete'])){
 		
 		foreach($_POST['checkbox'] as $key => $val){
 		//echo $val;

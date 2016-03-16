@@ -1,7 +1,5 @@
 <?php
 
-//$_GET['id'] = "";
-
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
@@ -17,23 +15,47 @@
 				//$select = mysqli_select_db('test');
 				mysqli_select_db($conn,"test");
 				
+				if(isset($_GET['id']))	{
+				
 				$edit = "SELECT user,Name,Email,Password,ConfirmPassword,Country,Gender,Admin,Message FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
 				$dob = "SELECT Birthday FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
+				
 				
 				$record = mysqli_query($conn,$edit);
 				$data = mysqli_fetch_array($record);
 				
 				$dob1 = mysqli_query($conn,$dob);
 				$dob2 = mysqli_fetch_array($dob1);
+				//echo '<pre>';
+				//print_r($data);
+				
+				
+				
 				//echo "SELECT Birthday FROM SignUpForm WHERE user='". $_GET['id'] ."' ";
 				$dob2 = explode('-',$dob2[0]);
 				
+				}
+				
+				if(!isset($_GET['id'])){
+					$data['user'] = '';
+					$data['Name'] = '';
+					$data['Email'] = '';
+					$data['Country'] = '';
+					$data['Gender'] = '';
+					$data['Admin'] = '';
+					$data['Message'] = '';
+					//$dob[] = "";
+					$dob2[0]="";
+					$dob2[1]="";
+					$dob2[2]="";
+				}
 				
 				//echo explode($conn,$edit);
 				
 			if (isset($data)){
 				//echo "SELECT u	serid,Name,Email,Password,ConfirmPassword,Country,Birthday,Gender,Admin,Message FROM SignUpForm WHERE user='". $_GET['id'] ."' " ;
 			}
+				
 ?>
 <!doctype html>
 <html>
@@ -740,7 +762,7 @@ function test_input($data) {
 		$conn->close();
 
 		}
-		
+				
 		?>
 	</fieldset>	
 </form>
